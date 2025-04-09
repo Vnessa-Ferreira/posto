@@ -1,0 +1,87 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Fonte e fundo geral */
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #842af1;
+    color: #333;
+  }
+  
+  /* Container geral da página */
+  .dashboard-container {
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  /* Seções como Vendas, Adicionar Produto etc */
+  .section {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Título principal e das seções */
+  .section-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+  }
+  
+  /* Tabela */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 14px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #eef1f5;
+    font-weight: bold;
+  }
+  
+  /* Formulário de adicionar produto */
+  .form-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .form-grid input {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    flex: 1;
+    min-width: 180px;
+  }
+  
+  /* Botão */
+  .button-primary {
+    padding: 10px 20px;
+    background-color: #4c4b4d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-primary:hover {
+    background-color: #1d4ed8;
+  }
+

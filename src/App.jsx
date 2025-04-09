@@ -1,25 +1,26 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-import TelaVendedor from './vendedor';
-import TelaSupervisor from './supervisor';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import Login from './Login.jsx';
+import TelaSupervisor from './TelaSupervisor';
+import TelaVendedor from './TelaVendedor';
 
-function App() {
-  const [count, setCount] = useState(0);
+const App = () => {
+  const [userType, setUserType] = useState(null);
+
+  const handleLogin = (type) => {
+    setUserType(type);
+  };
 
   return (
-    
-  <BrowserRouter>
-    <Routes>
-      <Route path="/vendedor" element={<TelaVendedor/>}/>
-      <Route path="/supervisor" element={<TelaSupervisor/>}/>
-    </Routes>
-  
-  
-  </BrowserRouter>    
+    <div>
+      {!userType ? (
+        <Login onLogin={handleLogin} />
+      ) : userType === 'supervisor' ? (
+        <TelaSupervisor />
+      ) : (
+        <TelaVendedor />
+      )}
+    </div>
   );
-}
+};
 
 export default App;

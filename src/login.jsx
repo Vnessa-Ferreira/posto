@@ -1,49 +1,56 @@
 import React, { useState } from 'react';
+import './login.css';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+function Login({ onLogin }) {
+  const [usuario, setUsuario] = useState('');
+  const [senha, setSenha] = useState('');
+  const [mensagem, setMensagem] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Aqui você pode adicionar a lógica de autenticação
-    if (email === 'usuario@exemplo.com' && password === 'senha123') {
-      alert('Login bem-sucedido!');
-      // Redirecionar ou fazer outra ação após o login
+    if (usuario === 'supervisor' && senha === '123') {
+      setMensagem('✅ Bem-vindo, Supervisor!');
+      setTimeout(() => {
+        onLogin('supervisor');
+      }, 1500); // espera 1.5 segundos antes de redirecionar
+    }
+    else if (usuario === 'vendedor' && senha === '123') {
+      setMensagem('✅ Bem-vindo, Vendedor!');
+      setTimeout(() => {
+        onLogin('vendedor');
+      }, 1500); 
     } else {
-      setError('Email ou senha incorretos');
+      setMensagem('❌ Usuário ou senha inválidos!');
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
+    <div className="container">
+      <div className="login-box">
+        <h1 className="login-title">Login</h1>
+        <form onSubmit={handleSubmit} className="login-form">
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
+            type="text"
+            placeholder="Usuário"
+            value={usuario}
+            onChange={(e) => setUsuario(e.target.value)}
+            className="login-input"
           />
-        </div>
-        <div>
-          <label>Senha:</label>
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+            placeholder="Senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            className="login-input"
           />
-        </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit">Entrar</button>
-      </form>
+          <button type="submit" className="login-button">Entrar</button>
+        </form>
+        {mensagem && <p className="login-message">{mensagem}</p>}
+      </div>
     </div>
   );
-};
+}
 
 export default Login;
+
